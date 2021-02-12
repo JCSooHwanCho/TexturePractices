@@ -8,13 +8,14 @@
 import UIKit
 import AsyncDisplayKit
 
+// 전체적인 사용방법은 뷰컨트롤러와 크게 다르지 않다.
 class ViewController: ASDKViewController<ASTableNode> {
 
     private var imageCategories: [String] = []
     private var tableNode: ASTableNode?
 
     override init() {
-        super.init(node: ASTableNode())
+        super.init(node: ASTableNode()) // 특정 노드를 넣어서 초기화
 
         self.imageCategories = ["abstract", "animals", "business", "cats", "city", "food", "nightlife", "fashion", "people", "nature", "sports", "technics", "transport"]
     }
@@ -26,7 +27,6 @@ class ViewController: ASDKViewController<ASTableNode> {
     // MARK :- UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         self.title = "Image Categories"
 
         self.node.delegate = self
@@ -47,6 +47,7 @@ class ViewController: ASDKViewController<ASTableNode> {
     }
 }
 
+// TableView, CollectionView 의 delegate는 View가 Node로 바뀐 정도다.
 extension ViewController: ASTableDataSource, ASTableDelegate {
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         return self.imageCategories.count
@@ -55,6 +56,7 @@ extension ViewController: ASTableDataSource, ASTableDelegate {
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         let imageCategory = self.imageCategories[indexPath.row]
         return {
+            // TextCellNode: 라벨 하나를 제공하는 노드
             let textCellNode = ASTextCellNode()
             textCellNode.text = imageCategory.capitalized
             return textCellNode

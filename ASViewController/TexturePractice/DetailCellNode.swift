@@ -33,10 +33,13 @@ final class DetailCellNode: ASCellNode {
         super.init()
     }
 
+    // 다양한 layoutSpec이 있다. 이걸로 뭔가 레이아웃을 만드는 것 같은데...
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         return ASRatioLayoutSpec(ratio: 1.0, child: self.imageNode)
     }
 
+    // 레이아웃이 끝난 뒤 호출된다.
+    // 메인 스레드에서 호출된다.
     override func layoutDidFinish() {
         super.layoutDidFinish()
 
