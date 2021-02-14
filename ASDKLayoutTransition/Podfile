@@ -1,0 +1,19 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'ASDKLayoutTransition' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for ASDKLayoutTransition
+  pod 'Texture'
+  target 'ASDKLayoutTransitionTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'ASDKLayoutTransitionUITests' do
+    # Pods for testing
+  end
+
+end
